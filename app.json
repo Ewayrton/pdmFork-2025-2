@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.marciobueno1.pdm20252"
+      "bundleIdentifier": "com.ewayrton.pdm20252"
     },
     "android": {
       "adaptiveIcon": {
@@ -18,7 +18,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.marciobueno1.pdm20252"
+      "package": "com.ewayrton.pdm20252"
     },
     "web": {
       "bundler": "metro",
@@ -42,15 +42,7 @@
     "experiments": {
       "typedRoutes": true
     },
-    "extra": {
-      "eas": {
-        "projectId": "35aae221-2f3c-4cba-a266-939001718d54"
-      }
-    },
-    "owner": "marciobueno1",
-    "updates": {
-      "url": "https://u.expo.dev/35aae221-2f3c-4cba-a266-939001718d54"
-    },
+    "owner": "ewayrton",
     "runtimeVersion": {
       "policy": "appVersion"
     }
