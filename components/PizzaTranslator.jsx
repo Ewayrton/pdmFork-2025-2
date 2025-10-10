@@ -1,22 +1,24 @@
+import { Box, Heading, Input, InputField } from "@gluestack-ui/themed";
 import React, { useState } from "react";
-import { Text, TextInput, View } from "react-native";
 
 export const PizzaTranslator = () => {
   const [text, setText] = useState("");
   return (
-    <View style={{ padding: 10 }}>
-      <TextInput
-        style={{ height: 40, padding: 5 }}
-        placeholder="Type here to translate!"
-        onChangeText={(newText) => setText(newText)}
-        defaultValue={text}
-      />
-      <Text style={{ padding: 10, fontSize: 42 }}>
+    <Box className="p-3 w-11/12">
+      <Input>
+        <InputField
+          placeholder="Type here to translate!"
+          onChangeText={(newText) => setText(newText)}
+          defaultValue={text}
+          className="h-10"
+        />
+      </Input>
+      <Heading className="p-3 text-4xl">
         {text
           .split(" ")
           .map((word) => word && "🍕")
           .join(" ")}
-      </Text>
-    </View>
+      </Heading>
+    </Box>
   );
 };

@@ -1,6 +1,5 @@
-import { FlatList, StyleSheet, View } from "react-native";
-
 import { FlatListItem } from "@/components/FlatListItem";
+import { Box, FlatList } from "@gluestack-ui/themed";
 
 const DATA = [
   { id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba", name: "Devin" },
@@ -16,19 +15,12 @@ const DATA = [
   { id: "58694a0f-3da1-471f-bd96-149", name: "John" },
 ];
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 22,
-  },
-});
-
 export const FlatListExample = () => (
-  <View style={styles.container}>
+  <Box className="flex-1 pt-6 w-full">
     <FlatList
       data={DATA}
       renderItem={({ item }) => <FlatListItem item={item} />}
       keyExtractor={(item) => item.id}
     />
-  </View>
+  </Box>
 );

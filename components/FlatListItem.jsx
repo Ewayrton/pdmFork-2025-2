@@ -1,23 +1,7 @@
-import { StyleSheet, Text, View } from "react-native";
-
-const styles = StyleSheet.create({
-  itemContainer: {
-    backgroundColor: "#f9c2ff",
-    padding: 30,
-    marginVertical: 20,
-    height: 80,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
-  },
-});
+import { Box, Text } from "@gluestack-ui/themed";
 
 export const FlatListItem = ({ item }) => (
-  <View style={styles.itemContainer}>
-    <Text style={styles.item}>{item.name}</Text>
-  </View>
+  <Box className="bg-pink-300 p-8 my-5 h-20 items-center justify-center w-full">
+    <Text className="p-2 text-lg h-11">{item.name}</Text>
+  </Box>
 );

@@ -1,47 +1,42 @@
-import { Image, ScrollView, Text } from "react-native";
+import { Heading, Image, ScrollView } from "@gluestack-ui/themed";
 
 const logo = {
   uri: "https://reactnative.dev/img/tiny_logo.png",
-  width: 64,
-  height: 64,
 };
 
 export const ScrollViewApp = () => (
-  <ScrollView
-    contentContainerStyle={{
-      alignItems: "center",
-    }}
-  >
-    <Text style={{ fontSize: 96 }}>Scroll me plz</Text>
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Text style={{ fontSize: 96 }}>If you like</Text>
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Text style={{ fontSize: 96 }}>Scrolling down</Text>
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Text style={{ fontSize: 96 }}>What's the best</Text>
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Text style={{ fontSize: 96 }}>Framework around?</Text>
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Image source={logo} />
-    <Text style={{ fontSize: 80 }}>React Native</Text>
+  <ScrollView contentContainerClassName="items-center">
+    <Heading className="text-8xl">Scroll me plz</Heading>
+    {/* Aqui está a linha, e ela se repete várias vezes abaixo */}
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" /> 
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Heading className="text-8xl">If you like</Heading>
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Heading className="text-8xl">Scrolling down</Heading>
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Heading className="text-8xl">What's the best</Heading>
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Heading className="text-8xl">Framework around?</Heading>
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Image source={logo} alt="React Native Logo" className="w-16 h-16" />
+    <Heading className="text-7xl">React Native</Heading>
   </ScrollView>
 );

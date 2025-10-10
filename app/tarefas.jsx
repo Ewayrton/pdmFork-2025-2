@@ -1,16 +1,19 @@
 import { addTarefa, deleteTarefa, getTarefas, updateTarefa } from "@/api";
+import { CardTarefa } from "@/components/CardTarefa";
+import {
+  Box,
+  Button,
+  ButtonText,
+  FlatList,
+  Heading,
+  Input,
+  InputField,
+  Text,
+  View,
+} from "@gluestack-ui/themed";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import {
-  Alert,
-  Button,
-  FlatList,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
-import { CardTarefa } from "../components/CardTarefa";
+import { Alert } from "react-native";
 
 export default function TelaTarefas() {
   const [descricao, setDescricao] = useState("");
@@ -51,7 +54,6 @@ export default function TelaTarefas() {
   };
 
   function handleToggle(tarefa) {
-    console.log("toggle executado", tarefa);
     updateMutation.mutate({
       ...tarefa,
       concluida: !tarefa.concluida,
@@ -63,74 +65,43 @@ export default function TelaTarefas() {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.inputView}>
-        <TextInput
-          style={styles}
-          placeholder="Descrição"
-          value={descricao}
-          onChangeText={setDescricao}
-        />
-        <Button title="ADD" onPress={handleAdd} />
-      </View>
-      <FlatList
-        style={{ flex: 1, width: "100%" }}
-        contentContainerStyle={styles.list}
-        data={data}
-        keyExtractor={(item) => item.objectId}
-        renderItem={({ item }) => (
-          <CardTarefa
-            tarefa={item}
-            onToggle={handleToggle}
-            onPress={handleDelete}
+    <Box className="flex-1 bg-white items-center justify-start pb-8">
+      <Box className="w-11/12 flex-row items-center justify-between p-2 border border-gray-300 rounded-md my-3">
+        <Input variant="unstyled" className="flex-1">
+          <InputField
+            placeholder="Descrição"
+            value={descricao}
+            onChangeText={setDescricao}
+            onSubmitEditing={handleAdd}
           />
-        )}
-      />
-      {(isPending || error || isFetching) && (
-        <View style={styles.statusbar}>
-          {isPending && <Text>Carregando...</Text>}
-          {error && <Text>Erro: {error.message}</Text>}
+        </Input>
+        <Button onPress={handleAdd} action="primary">
+          <ButtonText>ADD</ButtonText>
+        </Button>
+      </Box>
+
+      {isPending ? <Heading>Carregando...</Heading> : (
+        <FlatList
+          className="flex-1 w-full"
+          contentContainerClassName="items-center"
+          data={data}
+          keyExtractor={(item) => item.objectId}
+          renderItem={({ item }) => (
+            <CardTarefa
+              tarefa={item}
+              onToggle={handleToggle}
+              onPress={handleDelete}
+            />
+          )}
+        />
+      )}
+
+      {(error || isFetching) && (
+        <View className="bg-yellow-300 w-full h-12 items-center justify-center">
+          {error && <Text className="text-red-600">Erro: {error.message}</Text>}
           {isFetching && <Text>Atualizando...</Text>}
         </View>
       )}
-    </View>
+    </Box>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "white",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    marginBottom: 30,
-  },
-  statusbar: {
-    backgroundColor: "yellow",
-    width: "100%",
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  list: {
-    width: "100%",
-    alignItems: "center",
-  },
-  input: {
-    width: "100%",
-    padding: 5,
-  },
-  inputView: {
-    width: "95%",
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: 5,
-    borderColor: "black",
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderRadius: 5,
-    marginBottom: 10,
-    marginTop: 10,
-  },
-});
